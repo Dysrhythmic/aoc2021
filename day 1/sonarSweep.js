@@ -25,9 +25,8 @@ function countIncreasedMeasurements() {
 
 function countIncreasedWindow() {
     const measurements = getMeasurements();
-    let measurement = measurements.next().value;
     let increasedMeasurements = 0;
-    let window1 = [measurement, measurements.next().value, measurements.next().value]
+    let window1 = [measurements.next().value, measurements.next().value, measurements.next().value]
     let window2 = []
 
     while (window1[window1.length - 1] !== undefined) {
