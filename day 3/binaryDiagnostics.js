@@ -75,4 +75,4 @@ console.log('Part 1:', powerConsumption);
 const O2GenRating = getRating(report, 'O2Generator');
 const CO2ScrubberRating = getRating(report, 'CO2Scrubber');
 const lifeSupportRating = multBinStrings(O2GenRating, CO2ScrubberRating);
-console.log('Part 2:', lifeSupportRating)
+console.log('Part 2:', lifeSupportRating);
