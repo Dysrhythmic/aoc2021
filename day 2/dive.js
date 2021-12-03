@@ -61,7 +61,7 @@ function followInstructions2() {
 }
 
 const [ horizontalPos, depth ] = followInstructions1();
-console.log("Part 1: ", horizontalPos * depth);
+console.log("Part 1:", horizontalPos * depth);
 
 const [ horizontalPos2, depth2 ] = followInstructions2();
-console.log("Part 2: ", horizontalPos2 * depth2);
+console.log("Part 2:", horizontalPos2 * depth2);
