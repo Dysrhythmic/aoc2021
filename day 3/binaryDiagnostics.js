@@ -19,7 +19,7 @@ function getEpsilonRate(report) {
     return getGammaRate(report).split('').map(bit => 1 - bit).join('');
 }
 
-function getPowerConsumption(gammaRate, epsilonRate) {
+function multBinStrings(gammaRate, epsilonRate) {
     return parseInt(gammaRate, 2) * parseInt(epsilonRate, 2)
 }
 
@@ -65,18 +65,14 @@ function getRating(report, ratingType) {
     return rating[0];
 }
 
-function getLifeSupportRating(O2GenRating, CO2ScrubberRating) {
-    return parseInt(O2GenRating, 2) * parseInt(CO2ScrubberRating, 2)
-}
-
 const report = fs.readFileSync(path.join(__dirname, 'input.txt'), 'utf8').split('\r\n');
 
 const gammaRate = getGammaRate(report);
 const epsilonRate = getEpsilonRate(report);
-const powerConsumption = getPowerConsumption(gammaRate, epsilonRate);
+const powerConsumption = multBinStrings(gammaRate, epsilonRate);
 console.log('Part 1:', powerConsumption);
 
 const O2GenRating = getRating(report, 'O2Generator');
 const CO2ScrubberRating = getRating(report, 'CO2Scrubber');
-const lifeSupportRating = getLifeSupportRating(O2GenRating, CO2ScrubberRating);
+const lifeSupportRating = multBinStrings(O2GenRating, CO2ScrubberRating);
 console.log('Part 2:', lifeSupportRating)
