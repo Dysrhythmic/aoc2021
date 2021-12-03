@@ -19,8 +19,8 @@ function getEpsilonRate(report) {
     return getGammaRate(report).split('').map(bit => 1 - bit).join('');
 }
 
-function multBinStrings(gammaRate, epsilonRate) {
-    return parseInt(gammaRate, 2) * parseInt(epsilonRate, 2)
+function multBinStrings(binString1, binString2) {
+    return parseInt(binString1, 2) * parseInt(binString2, 2)
 }
 
 function getRating(report, ratingType) {
