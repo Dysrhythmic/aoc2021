@@ -32,12 +32,12 @@ function makeGrid(gridSize) {
 }
 
 function updateGrid(grid, coords) {
-    const [ y, x ] = coords;
+    const [ x, y ] = coords;
 
-    if (grid[x][y] === '.') {
-        grid[x][y] = 1;
+    if (grid[y][x] === '.') {
+        grid[y][x] = 1;
     }
-    else { grid[x][y]++ }
+    else { grid[y][x]++ }
 }
 
 function* generateXValues(line) {
