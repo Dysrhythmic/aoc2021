@@ -42,22 +42,20 @@ function markMatches(num, bingoBoards) {
     }
 }
 
-function checkForBingo(bingoBoards) {
-    for (board of bingoBoards) { 
-        for (row of board) { 
-            let markedRowNums = 0;
-            for (num of row) {
-                num.marked && markedRowNums++;
-                if (markedRowNums === row.length) { return board; };
-            }
+function checkForBingo(board) {
+    for (row of board) { 
+        let markedRowNums = 0;
+        for (num of row) {
+            num.marked && markedRowNums++;
+            if (markedRowNums === row.length) { return board; };
         }
+    }
 
-        for (let i = 0; i < 5; i++) {
-            let markedColNums = 0;
-            for (row of board) { 
-                row[i].marked && markedColNums++;
-                if (markedColNums === row.length) { return board; }
-            }
+    for (let i = 0; i < 5; i++) {
+        let markedColNums = 0;
+        for (row of board) { 
+            row[i].marked && markedColNums++;
+            if (markedColNums === row.length) { return board; }
         }
     }
     return false;
@@ -78,12 +76,14 @@ let lastWinningNum = 0;
 for (bingoNum of bingoNumbers) {
     if (bingoBoards.length === 0) { break; }
     markMatches(bingoNum, bingoBoards);
-    const winningBoard = checkForBingo(bingoBoards);
-    if (winningBoard) {
-        lastWinningBoard = bingoBoards.splice(bingoBoards.indexOf(winningBoard), 1);
-        lastWinningNum = bingoNum;
-        winnerCount++;
-        winnerCount === 1 && console.log('Part 1:', getScore(lastWinningNum, lastWinningBoard[0]));
+    for (board of bingoBoards) {
+        const winningBoard = checkForBingo(board);
+        if (winningBoard) {
+            lastWinningBoard = bingoBoards.splice(bingoBoards.indexOf(winningBoard), 1);
+            lastWinningNum = bingoNum;
+            winnerCount++;
+            winnerCount === 1 && console.log('Part 1:', getScore(lastWinningNum, lastWinningBoard[0]));
+        }
     }
 }
 console.log('Part 2:', getScore(lastWinningNum, lastWinningBoard[0]));
