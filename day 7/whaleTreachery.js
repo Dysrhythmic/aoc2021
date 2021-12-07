@@ -1,11 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
-const positions = fs.readFileSync(path.join(__dirname, 'input.txt'), 'utf8').split(',').map(str => Number(str));
-positions.sort((a, b) => a - b);
+const positions = fs.readFileSync(path.join(__dirname, 'input.txt'), 'utf8').split(',').map(str => Number(str)).sort((a, b) => a - b);
 
 const medianPos = positions[Math.floor(positions.length / 2)];
 const totalFuelCost = positions.reduce((acc, pos) => acc + Math.abs(medianPos - pos), 0);
+
 console.log('Part 1:', totalFuelCost)
 
 function getConsecutiveFuelCost(targetPos) {
