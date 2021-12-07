@@ -11,7 +11,7 @@ console.log('Part 1:', totalFuelCost)
 function getConsecutiveFuelCost(targetPos) {
     return positions.reduce((acc, pos) => {
         const n = Math.abs(targetPos - pos);
-        consecutiveSum = n * (n + 1) / 2;
+        const consecutiveSum = n * (n + 1) / 2;
         return acc + consecutiveSum;
     }, 0);
 }
