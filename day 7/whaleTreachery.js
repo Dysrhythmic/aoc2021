@@ -16,8 +16,8 @@ function getConsecutiveFuelCost(targetPos) {
     }, 0);
 }
 
-const meanPos1 = Math.ceil(positions.reduce((acc, pos) => acc + pos) / positions.length);
-const meanPos2 = Math.floor(positions.reduce((acc, pos) => acc + pos) / positions.length);
+const meanPos1 = Math.ceil(positions.reduce((acc, pos) => acc + pos) / positions.length, 0);
+const meanPos2 = Math.floor(positions.reduce((acc, pos) => acc + pos) / positions.length, 0);
 const totalFuelCost1 = getConsecutiveFuelCost(meanPos1)
 const totalFuelCost2 = getConsecutiveFuelCost(meanPos2)
 
