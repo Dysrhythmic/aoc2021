@@ -21,28 +21,29 @@ function countFish(days, fishTimers) {
                 // Get the number of the fish with the current timer and move them down 1 day.
                 fishTimers[timer - 1] += fishTimers[timer];
                 fishTimers[timer] = BigInt(0);
-                if (Number(timer) === 8) {
+                if (Number(timer) === 6) {
                     // Since the fish with 0 days left have already gone,
-                    // the fish with 0 days left were added to the fish at position 8.
-                    // Therefore, when we get to position 8 some of the fish need to move to position 7
-                    // while others should remain at 8 since they were already repositioned for that day.
+                    // the fish at position 0 were added to the fish at position 6.
+                    // Therefore, when we get to position 6 some of the fish need to move to position 5
+                    // while others should remain at 6 since they were already repositioned for that day
+                    // (i.e. the ones that were at position 0).
                     // Since each fish at position 0 spawned 1 fish, newCount will be equal to
                     // the number of fish that were moved from position 0.
                     // We can correct for the fish who were moved twice by moving a number of fish equal to newCount
-                    // back from position 7 to position 8. 
-                    fishTimers[7] -= newCount;
+                    // back from position 5 to position 6. 
+                    fishTimers[5] -= newCount;
                     fishTimers[timer] += newCount;
                 }
             }
             else {
-                // Fish at position 0 move to position 8 and spawn 1 new fish each 
-                fishTimers[8] += fishTimers[timer];
+                // Fish at position 0 move to position 6 and spawn 1 new fish each 
+                fishTimers[6] += fishTimers[timer];
                 newCount = fishTimers[timer];
                 fishTimers[timer] = BigInt(0);
             }
         }
-        // Add the newly spawned fish to position 6
-        fishTimers[6] += newCount;
+        // Add the newly spawned fish to position 8
+        fishTimers[8] += newCount;
     }
     // Get the sum of all fish
     return fishTimers.reduce((acc, timerCount) => acc + timerCount);
