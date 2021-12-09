@@ -21,7 +21,7 @@ function countFish(days, fishTimers) {
                 // Get the number of the fish with the current timer and move them down 1 day.
                 fishTimers[timer - 1] += fishTimers[timer];
                 fishTimers[timer] = BigInt(0);
-                if (timer == 8) {
+                if (timer === 8) {
                     // Since the fish with 0 days left have already gone,
                     // the fish with 0 days left were added to the fish at position 8.
                     // Therefore, when we get to position 8 some of the fish need to move to position 7
@@ -44,7 +44,6 @@ function countFish(days, fishTimers) {
         // Add the newly spawned fish to position 6
         fishTimers[6] += newCount;
     }
-
     // Get the sum of all fish
     return fishTimers.reduce((acc, timerCount) => acc + timerCount);
 }
