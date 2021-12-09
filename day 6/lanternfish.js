@@ -51,10 +51,8 @@ function countFish(days, fishTimers) {
 
 const maxFishTimer = 8;
 
-let fishTimers = getFishTimers(maxFishTimer);
-let totalFish = countFish(80, fishTimers);
+let totalFish = countFish(80, getFishTimers(maxFishTimer));
 console.log('Part 1:', totalFish);
 
-fishTimers = getFishTimers(maxFishTimer);
-totalFish = countFish(256, fishTimers);
+totalFish = countFish(256, getFishTimers(maxFishTimer));
 console.log('Part 2:', totalFish);
