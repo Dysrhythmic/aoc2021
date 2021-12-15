@@ -125,7 +125,7 @@ func (hm heightMap) mapBasin(p point) []point {
 		queue = queue[1:]
 
 		// must use the coordinates to access the points current state in the heightMap
-		// instead of check the inBasin property of the copy (p) which can become out of sync
+		// instead of checking the inBasin property of the copy (p) which can become out of sync
 		if p.value < 9 && !hm[p.coords[0]][p.coords[1]].inBasin {
 			// update the point in the heightMap instead of the copy (p)
 			hm[p.coords[0]][p.coords[1]].inBasin = true
